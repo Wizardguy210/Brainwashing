@@ -1,3 +1,5 @@
+--// Locals !! \\--
+
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/WallySV2XD/main/Waluh.lua', true))()
 local Window1 = library:CreateWindow('Farm Stuff')
 local Core = game:GetService('CoreGui')
@@ -8,8 +10,9 @@ local Sword = nil
 local Char = Me.Character
 local window2 = library:CreateWindow('Armors')
 local window3 = library:CreateWindow('Private Universes')
-
 Core.ScreenGui.Name = 'Wally'
+
+-- // Script Thangs \\--
 Window1:Button('Show Level and Gold', function()
     rconsoleprint('@@LIGHT_MAGENTA@@')
     rconsolename('Level and Gold')
