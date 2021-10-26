@@ -1,4 +1,3 @@
---// Locals \\--
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/WallySV2XD/main/Waluh.lua', true))()
 local Window1 = library:CreateWindow('Poop')
 local Core = game:GetService('CoreGui')
@@ -7,10 +6,8 @@ local Me = game:GetService('Players').LocalPlayer
 local Sword = nil
 local Char = Me.Character
 
---// HOW???? \\--
-Core.ScreenGui.Name = 'Wally'
 
---// Scripta Sstuff $$$ \\--
+Core.ScreenGui.Name = 'Wally'
 Window1:Button('Show Level', function()
     rconsoleprint('@@LIGHT_MAGENTA@@')
         while wait(3) do
@@ -37,8 +34,13 @@ task.spawn(function()
 
 Window1:Toggle('Auto Swing', {flag = 'Autoswing'})
 
-Window1:Button('Teleport To op armor', function()
+Window1:Button('Teleport To op armor Universe 1', function()
     Char.HumanoidRootPart.CFrame = CFrame.new(741.391, 13.758, 464.647)
+    
+end)
+
+Window1:Button('Teleport to op armor Universe 2', function()
+   Char.HumanoidRootPart.CFrame = CFrame.new(-604.495, 23.587, 794.749) 
     
 end)
 
