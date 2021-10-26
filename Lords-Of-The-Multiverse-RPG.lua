@@ -1,3 +1,4 @@
+--// Locals \\--
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/WallySV2XD/main/Waluh.lua', true))()
 local Window1 = library:CreateWindow('Poop')
 local Core = game:GetService('CoreGui')
@@ -6,8 +7,10 @@ local Me = game:GetService('Players').LocalPlayer
 local Sword = nil
 local Char = Me.Character
 
-
+--// HOW???? \\--
 Core.ScreenGui.Name = 'Wally'
+
+--// Scripta Sstuff $$$ \\--
 Window1:Button('Show Level', function()
     rconsoleprint('@@LIGHT_MAGENTA@@')
         while wait(3) do
