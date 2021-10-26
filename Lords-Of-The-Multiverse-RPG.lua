@@ -2,6 +2,7 @@ local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karsh
 local Window1 = library:CreateWindow('Farm Stuff')
 local Core = game:GetService('CoreGui')
 local Level = game:GetService('Players').LocalPlayer.leaderstats.Lvl
+local Gold = game:GetService('Players').LocalPlayer.leaderstats.Gd
 local Me = game:GetService('Players').LocalPlayer
 local Sword = nil
 local Char = Me.Character
@@ -9,10 +10,15 @@ local window2 = library:CreateWindow('Armors')
 local window3 = library:CreateWindow('Private Universes')
 
 Core.ScreenGui.Name = 'Wally'
-Window1:Button('Show Level', function()
+Window1:Button('Show Level and Gold', function()
     rconsoleprint('@@LIGHT_MAGENTA@@')
-        while wait(3) do
+    rconsolename('Level and Gold')
+        while wait(6) do
+            rconsoleprint('Level: ')
             rconsoleprint(Level.Value)
+                rconsoleprint('\n')
+            rconsoleprint('Gold: ')
+            rconsoleprint(Gold.Value)
                 rconsoleprint('\n')
             end
     end)
