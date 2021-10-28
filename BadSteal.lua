@@ -18,7 +18,7 @@ end)
 
 win1:Button('Drop Tools', function()
   for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-    v.Parent = game.Players.LocalPlayer.Character
+    v.Parent = SwagDealer.Character
     v.Parent = workspace
 end              
 end)
