@@ -1,4 +1,9 @@
+--// LOCALS!!! \\--
+
 local LP = game:GetService('Players').LocalPlayer
+
+
+--// SCRIPTA!!! \\--
 _G.A = true
     while _G.A do
         wait()
