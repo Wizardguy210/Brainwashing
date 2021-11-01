@@ -10,7 +10,7 @@ Core.ScreenGui.Name = 'Wally'
 --// Ok \\ --
 win1:Button('Steal', function()
 for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
-    if v.Name == 'BoomBox' and v:IsA'Tool' then
+    if v:IsA'Tool' then
 v.Handle.CFrame = SwagDealer.Character.HumanoidRootPart.CFrame
 end  
 end    
