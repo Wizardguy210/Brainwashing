@@ -10,7 +10,7 @@ Core.ScreenGui.Name = 'Wally'
 
 --// Ok \\ --
 task.spawn(function()
-    while task.wait() do 
+    while task.wait(.4) do 
         if win1.flags.Steal then
     for i,v in pairs(game:GetService('Workspace'):GetChildren()) do
         if v:IsA'Tool' then
