@@ -17,7 +17,11 @@ task.spawn(function()
         if win1.flags.Steal then
    for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
     if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
-                     Humanoid:EquipTool(v)        
+       for i2,v2 in pairs(v:GetDescendants()) do 
+          if v2:IsA'TouchTransmitter' then 
+               firetouchinterest(RootPart, v2.Parent, 0)
+                            end
+                        end
                     end
                 end
             end
@@ -25,10 +29,24 @@ task.spawn(function()
     end)
 win1:Toggle('Steal Tools', {flag = 'Steal'})
 
+task.spawn(function()
+    while task.wait() do
+        if win1.flags.Anti then
+            for i1,v1 in pairs(char:GetDescendants()) do
+        if v1:IsA'Tool' and v1.Name == 'Boombox' or v1.Name == 'BoomBox' or v1.Name == 'SuperFlyGoldenBoombox' then
+            Humanoid:UnequipTools(v1)
+                end
+            end           
+        end
+    end
+end)
+win1:Toggle('Anti Kill', {flag = 'Anti'})
+
+
 win1:Button('Drop Tools', function()
   for i,v in pairs(back:GetChildren()) do
     v.Parent = char
-    v.Parent = workspace
+    v.Parent = game:GetService('Workspace')
 end              
 end)
 
