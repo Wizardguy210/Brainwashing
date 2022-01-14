@@ -20,6 +20,12 @@ task.spawn(function()
        for i1,v1 in pairs(v:GetDescendants()) do 
           if v1:IsA'TouchTransmitter' then 
                firetouchinterest(RootPart, v1.Parent, 0)
+              wait()
+for i6,v6 in pairs(char:GetChildren()) do
+    if v6:IsA'Tool' then
+        v6.Parent = back
+                                    end
+                                end
                             end
                         end
                     end
