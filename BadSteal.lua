@@ -17,13 +17,13 @@ task.spawn(function()
         if win1.flags.Steal then
    for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
     if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
-       for i1,v1 in pairs(v:GetDescendants()) do 
-          if v1:IsA'TouchTransmitter' then 
-               firetouchinterest(RootPart, v1.Parent, 0)
+       for i,v in pairs(v:GetDescendants()) do 
+          if v:IsA'TouchTransmitter' then 
+               firetouchinterest(RootPart, v.Parent, 0)
               wait()
-for i6,v6 in pairs(char:GetChildren()) do
-    if v6:IsA'Tool' then
-        v6.Parent = back
+for i,v in pairs(char:GetChildren()) do
+    if v:IsA'Tool' then
+        v.Parent = back
                                     end
                                 end
                             end
@@ -36,11 +36,33 @@ for i6,v6 in pairs(char:GetChildren()) do
 win1:Toggle('Steal Tools', {flag = 'Steal'})
 
 task.spawn(function()
+    while task.wait(.8) do
+        if win1.flags.TPOAbuse then
+  
+for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
+  if v:IsA'Sound' then
+     v.TimePosition = math.random(1,100)
+     
+    end
+end
+for i,v in pairs(game:GetService('Players'):GetDescendants()) do
+    if v:IsA'Sound' then
+    v.TimePosition = math.random(1,100)
+    end
+end
+        end
+    end
+end)
+win1:Toggle('TPOAbuse', {flag = 'TPOAbuse'})
+
+
+
+task.spawn(function()
     while task.wait() do
         if win1.flags.Anti then
-            for i2,v2 in pairs(char:GetDescendants()) do
-        if v2:IsA'Tool' and v2.Name == 'Boombox' or v2.Name == 'BoomBox' or v2.Name == 'SuperFlyGoldenBoombox' then
-            Humanoid:UnequipTools(v2)
+            for i,v in pairs(char:GetDescendants()) do
+        if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
+            Humanoid:UnequipTools(v)
                 end
             end           
         end
@@ -54,9 +76,9 @@ win1:Button('Right Arm Anti Kill', function()
 end)
 
 win1:Button('Drop Tools', function()
-  for i3,v3 in pairs(back:GetChildren()) do
-    v3.Parent = char
-    v3.Parent = game:GetService('Workspace')
+  for i,v in pairs(back:GetChildren()) do
+    v.Parent = char
+    v.Parent = game:GetService('Workspace')
 end              
 end)
 
