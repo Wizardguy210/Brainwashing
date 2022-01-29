@@ -1,5 +1,11 @@
+--// To Do \\--
+--[[
+Add Anchored Humanoid,
+Fix script breaking on death (humanoidrootpart loses its definition or path whatever you want to call it
+add sex
+--]]
+
 --// ROFL \\--
--- Z
 local me = game:GetService('Players').LocalPlayer
 local back = me.Backpack
 local char = me.Character
