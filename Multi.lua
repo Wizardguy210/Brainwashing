@@ -1,6 +1,5 @@
 --// To Do \\--
 --[[
-Add Anchored Humanoid,
 Fix script breaking on death (humanoidrootpart loses its definition or path whatever you want to call it
 add sex
 --]]
@@ -61,7 +60,17 @@ end
 end)
 win1:Toggle('TPOAbuse', {flag = 'TPOAbuse'})
 
-
+task.spawn(function()
+    while task.wait() do
+        if win1.flags.FREEZE then
+            char.HumanoidRootPart.Anchored = true
+            else
+            char.HumanoidRootPart.Anchored = false
+            
+         end
+     end
+end)
+win1:Toggle('Freeze Humanoid', {flag = 'FREEZE'})
 
 task.spawn(function()
     while task.wait() do
