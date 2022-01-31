@@ -1,5 +1,6 @@
 --// To Do \\--
 --[[
+Add Anchored Humanoid,
 Fix script breaking on death (humanoidrootpart loses its definition or path whatever you want to call it
 add sex
 --]]
@@ -76,7 +77,7 @@ task.spawn(function()
     while task.wait() do
         if win1.flags.Anti then
             for i,v in pairs(char:GetDescendants()) do
-        if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
+        if v:IsA'Tool' then
             Humanoid:UnequipTools(v)
                 end
             end           
