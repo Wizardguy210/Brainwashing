@@ -1,16 +1,28 @@
---// To Do \\--
+-- // Added \\ --
 --[[
-Add Anchored Humanoid,
-Fix script breaking on death (humanoidrootpart loses its definition or path whatever you want to call it
-add sex
+
+made stuff not break as much (you can die now but wait like a second before reactivating anything)
+
+Stupid way of fixing it too
+
 --]]
 
+--// To Do \\--
+--[[
+
+MAKE VARIABLES WORK AGAIN WITH THIS SHIT!!!!!!!!!!!
+
+add sex
+
+--]]
+
+--// Bugs \\--
+--[[
+
+Freeze humanoid breaks a lot (lol)
+
+--]]
 --// ROFL \\--
-local me = game:GetService('Players').LocalPlayer
-local back = me.Backpack
-local char = me.Character
-local Humanoid = char.Humanoid
-local RootPart = char.HumanoidRootPart
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
 local win1 = library:CreateWindow('Karma')
 local Core = game:GetService('CoreGui')
@@ -25,11 +37,11 @@ task.spawn(function()
     if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
        for i,v in pairs(v:GetDescendants()) do 
           if v:IsA'TouchTransmitter' then 
-               firetouchinterest(RootPart, v.Parent, 0)
+               firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
               wait()
-for i,v in pairs(char:GetChildren()) do
+for i,v in pairs(game:GetService('Players').LocalPlayer.Character:GetChildren()) do
     if v:IsA'Tool' then
-        v.Parent = back
+        v.Parent = game:GetService('Players').LocalPlayer.Backpack
                                     end
                                 end
                             end
@@ -64,9 +76,9 @@ win1:Toggle('TPOAbuse', {flag = 'TPOAbuse'})
 task.spawn(function()
     while task.wait() do
         if win1.flags.FREEZE then
-            char.HumanoidRootPart.Anchored = true
+            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.Anchored = true
             else
-            char.HumanoidRootPart.Anchored = false
+            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.Anchored = false
             
          end
      end
@@ -76,9 +88,9 @@ win1:Toggle('Freeze Humanoid', {flag = 'FREEZE'})
 task.spawn(function()
     while task.wait() do
         if win1.flags.Anti then
-            for i,v in pairs(char:GetDescendants()) do
+            for i,v in pairs(game:GetService('Players').LocalPlayer.Character:GetDescendants()) do
         if v:IsA'Tool' then
-            Humanoid:UnequipTools(v)
+            game:GetService('Players').LocalPlayer.Character.Humanoid:UnequipTools(v)
                 end
             end           
         end
@@ -87,13 +99,13 @@ end)
 win1:Toggle('Anti Kill', {flag = 'Anti'})
 
 win1:Button('Right Arm Anti Kill', function()
-    char['Right Arm']:Destroy()
+    game:GetService('Players').LocalPlayer.Character['Right Arm']:Destroy()
     
 end)
 
 win1:Button('Drop Tools', function()
-  for i,v in pairs(back:GetChildren()) do
-    v.Parent = char
+  for i,v in pairs(game:GetService('Players').LocalPlayer.Backpack:GetChildren()) do
+    v.Parent = game:GetService('Players').LocalPlayer.Character
     v.Parent = game:GetService('Workspace')
 end              
 end)
