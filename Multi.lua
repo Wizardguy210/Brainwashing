@@ -11,6 +11,7 @@ Stupid way of fixing it too
 --[[
 
 MAKE VARIABLES WORK AGAIN WITH THIS SHIT!!!!!!!!!!!
+^ Whenever you reset, you get a new set of like parts humanoidrootpart for example, need to find a way to reassign variables without it being a clusterfuck
 
 add sex
 
