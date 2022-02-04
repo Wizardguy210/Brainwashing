@@ -15,6 +15,8 @@ MAKE VARIABLES WORK AGAIN WITH THIS SHIT!!!!!!!!!!!
 
 add sex
 
+Make a better antikill
+
 --]]
 
 --// Bugs \\--
