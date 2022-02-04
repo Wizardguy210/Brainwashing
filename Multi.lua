@@ -20,7 +20,7 @@ add sex
 --[[
 
 Freeze humanoid breaks a lot (lol)
-
+^ used it a bit doesnt break as often as i thought, still needs a fix though which is making variables work
 --]]
 --// ROFL \\--
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
