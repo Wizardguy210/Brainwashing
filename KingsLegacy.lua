@@ -10,7 +10,7 @@ local Window3          = UILib:CreateWindow('Misc')
 local SpawnPoints      = game:GetService('Workspace').SpawnPoints
 local RedeemCodeRemote = game:GetService('ReplicatedStorage').Remotes.Functions.redeemcode
 local Location         = game:GetService('Workspace').AllspawnDF
-
+local TP               = game:GetService('TeleportService')
 for i, v in next, game:GetService('CoreGui'):GetChildren() do
     if v.Name == 'ScreenGui' then
         v.Name = 'MainUI'
@@ -77,6 +77,11 @@ elseif Location == 'Fishland LVL 2K' then
 
     end
 end)
+
+local TPWorld2 = Window1:Button('Teleport To World 2', function()
+    TP:Teleport(6381829480)
+end)    
+
 
 local RedeemCodes = Window2:Button('Redeem All Codes', function()
     RedeemCodeRemote:InvokeServer('Peodiz')
