@@ -1,13 +1,16 @@
-local library          = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
-local win1             = library:CreateWindow('Main')
-local win2             = library:CreateWindow('Teleports')
-local win3             = library:CreateWindow('Misc')
-local Core             = game:GetService('CoreGui')
-local remote           = game:GetService('ReplicatedStorage').Remote.RemoteFunction
-local locations        = game:GetService('Workspace').Ignore.HighlightSpawns
-local SkyIsland        = game:GetService('Workspace').Ignore.BoostedShotArea.SkyIsland
+local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
+-- ^ TY WALLY!!! --
+local win1 = library:CreateWindow('Main')
+local win2 = library:CreateWindow('Teleports')
+local win3 = library:CreateWindow('Unboxing')
+local win4 = library:CreateWindow('Misc')
+local Core = game:GetService('CoreGui')
+local remote = game:GetService('ReplicatedStorage').Remote.RemoteFunction
+local locations = game:GetService('Workspace').Ignore.HighlightSpawns
+local SkyIsland = game:GetService('Workspace').Ignore.BoostedShotArea.SkyIsland
 local HumanoidRootPart = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
-Core.ScreenGui.Name = 'Wally'
+local chests = game:getService('Workspace').ChestStands
+Core.ScreenGui.Name = 'MAINUI'
 
 
 task.spawn(function()
@@ -85,8 +88,41 @@ win2:Dropdown('Teleports', {
     end
 end)
 
+win3:Dropdown('Chests', {
+    Unbox = _G;
+    flag = 'Unbox';
+    list = {
+    'Sports Chest';
+    'Park Chest';
+    'Desert Chest';
+    'City Chest';
+    'Beach Chest';
+    'Space Chest';
+    'Moon Chest';
+    'Moon Base Chest';
+  
+    }
+}, function(Open)
+    if Open == 'Sports Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Sports Chest'])
+    elseif Open == 'Park Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Park Chest'])
+    elseif Open == 'Desert Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Desert Chest'])
+    elseif Open == 'City Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['City Chest'])
+    elseif Open == 'Beach Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Beach Chest'])
+    elseif Open == 'Space Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Space Chest'])
+    elseif Open == 'Moon Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Moon Chest'])
+    elseif Open == 'Moon Base Chest' then
+        remote:InvokeServer('PromptPurchaseChest', chests['Moon Base Chest'])
+    end
+end)
 
-win3:Button('Destroy', function()
-   game:GetService('CoreGui').Wally:Destroy() 
+win4:Button('Destroy', function()
+   game:GetService('CoreGui').MAINUI:Destroy() 
     
 end)
