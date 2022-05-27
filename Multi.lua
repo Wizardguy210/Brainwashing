@@ -1,31 +1,5 @@
--- // Added \\ --
 --[[
-
-made stuff not break as much (you can die now but wait like a second before reactivating anything)
-
-Stupid way of fixing it too
-
---]]
-
---// To Do \\--
---[[
-
-MAKE VARIABLES WORK AGAIN WITH THIS SHIT!!!!!!!!!!!
-^ Whenever you reset, you get a new set of like parts humanoidrootpart for example, need to find a way to reassign variables without it being a clusterfuck
-
-add sex
-
-Make a better antikill
-
---]]
-
---// Bugs \\--
---[[
-
-Freeze humanoid breaks a lot (lol)
-^ used it a bit doesnt break as often as i thought, still needs a fix though which is making variables work
---]]
-
+revamp later
 --// ROFL \\--
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
 local win1 = library:CreateWindow('Karma')
