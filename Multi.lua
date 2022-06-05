@@ -1,26 +1,35 @@
 --[[
-revamp later
---// ROFL \\--
+Features
+Steal Tools
+Abuse Time Position 
+Semi effective Anti Kill 
+Drop all tools
+--]]
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
-local win1 = library:CreateWindow('Karma')
-local Core = game:GetService('CoreGui')
-Core.ScreenGui.Name = 'Wally'
+local Window1 = library:CreateWindow('Features')
+local CoreGui = game:GetService('CoreGui'); CoreGui.ScreenGui.Name = 'MainUI'
+local Player = game:GetService('Players').LocalPlayer
+local Character = Player.Character
+local HumanoidRootPart = Character:WaitForChild('HumanoidRootPart')
+local Humanoid = Character:WaitForChild('Humanoid')
+Player.CharacterAdded:Connect(function(NewCharacter)
+  Character = NewCharacter
+  HumanoidRootPart = NewCharacter:WaitForChild('HumanoidRootPart')
+  HumanoidRootPart = NewCharacter:WaitForChild('Humanoid')
+end)
 
 
---// Ok \\ --
 task.spawn(function()
-    while task.wait() do 
-        if win1.flags.Steal then
-   for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
-    if v:IsA'Tool' and v.Name == 'Boombox' or v.Name == 'BoomBox' or v.Name == 'SuperFlyGoldenBoombox' then
-       for i,v in pairs(v:GetDescendants()) do 
-          if v:IsA'TouchTransmitter' then 
-               firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
-              wait()
-for i,v in pairs(game:GetService('Players').LocalPlayer.Character:GetChildren()) do
-    if v:IsA'Tool' then
-        v.Parent = game:GetService('Players').LocalPlayer.Backpack
-                                    end
+    while task.wait() do
+        if Window1.flags.StealTools then
+            for i, v in next, game:GetService('Workspace'):GetChildren() do
+                if v:IsA'Tool' then
+                    for i, Tool in next, v:GetDescendants() do
+                        if Tool:IsA'TouchTransmitter' then
+                            firetouchinterest(HumanoidRootPart, Tool.Parent, 0)
+                        for Random, Name in next, Character:GetChildren() do
+                            if Name:IsA'Tool' then
+                                Name.Parent = LocalPlayer.Backpack
                                 end
                             end
                         end
@@ -28,66 +37,49 @@ for i,v in pairs(game:GetService('Players').LocalPlayer.Character:GetChildren())
                 end
             end
         end
-    end)
-win1:Toggle('Steal Tools', {flag = 'Steal'})
-
-task.spawn(function()
-    while task.wait(.8) do
-        if win1.flags.TPOAbuse then
-  
-for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
-  if v:IsA'Sound' then
-     v.TimePosition = math.random(1,100)
-     
-    end
-end
-for i,v in pairs(game:GetService('Players'):GetDescendants()) do
-    if v:IsA'Sound' then
-    v.TimePosition = math.random(1,100)
-    end
-end
-        end
     end
 end)
-win1:Toggle('TPOAbuse', {flag = 'TPOAbuse'})
+Window1:Toggle('Steal Tools', {flag = 'StealTools'})
 
 task.spawn(function()
     while task.wait() do
-        if win1.flags.FREEZE then
-            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.Anchored = true
-            else
-            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.Anchored = false
-            
-         end
-     end
-end)
-win1:Toggle('Freeze Humanoid', {flag = 'FREEZE'})
-
-task.spawn(function()
-    while task.wait() do
-        if win1.flags.Anti then
-            for i,v in pairs(game:GetService('Players').LocalPlayer.Character:GetDescendants()) do
-        if v:IsA'Tool' then
-            game:GetService('Players').LocalPlayer.Character.Humanoid:UnequipTools(v)
+        if Window1.flags.AbusePosition then
+            for MiltonMall, Vengeance in next, game:GetService('Workspace'):GetDescendants() do
+                if Vengeance:IsA'Sound' then
+                    Vengeance.TimePosition = math.random(1,100)
+                        end
+            for Pedophile, Falco in next, game:GetService('Players'):GetDescendants() do
+                if Falco:IsA'Sound' then
+                    Falco.TimePosition = math.random(1,100)
+                        end
                 end
-            end           
+            end
         end
     end
 end)
-win1:Toggle('Anti Kill', {flag = 'Anti'})
+Window1:Toggle('Abuse TimePosition', {flag = 'AbusePosition'})
 
-win1:Button('Right Arm Anti Kill', function()
-    game:GetService('Players').LocalPlayer.Character['Right Arm']:Destroy()
-    
+task.spawn(function()
+    while task.wait() do
+        if Window1.flags.AntiKill then
+            for i, v in next, Character:GetChildren() do
+                if v:IsA'Tool' then
+                    Humanoid:UnequipTools(v)
+                end
+            end
+        end
+    end
+end)
+Window1:Toggle('Anti Kill', {flag = 'AntiKill'})
+
+Window1:Button('Drop All Tools', function()
+    for i, v in next, LocalPlayer.Backpack:GetChildren() do
+        v.Parent = Character
+        wait()
+        v.Parent = game:GetService('Workspace')
+        end
 end)
 
-win1:Button('Drop Tools', function()
-  for i,v in pairs(game:GetService('Players').LocalPlayer.Backpack:GetChildren()) do
-    v.Parent = game:GetService('Players').LocalPlayer.Character
-    v.Parent = game:GetService('Workspace')
-end              
-end)
-
-win1:Button('Destroy', function()
- Core.Wally:Destroy()       
+Window1:Button('Destroy UI', function()
+    CoreGui.MainUI:Destroy()
 end)
