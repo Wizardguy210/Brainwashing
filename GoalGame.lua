@@ -1,18 +1,20 @@
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
 -- ^ TY WALLY!!! --
 local Player = game:GetService('Players').LocalPlayer
+local Character = Player.Character
+local HumanoidRootPart = Character.HumanoidRootPart
 local win1 = library:CreateWindow('Main')
 local win2 = library:CreateWindow('Teleports')
-local win3 = library:CreateWindow('Unboxing')
+local win3 = library:CreateWindow('Purchases')
 local win4 = library:CreateWindow('Misc')
 local Core = game:GetService('CoreGui')
 local remote = game:GetService('ReplicatedStorage').Remote.RemoteFunction
 local locations = game:GetService('Workspace').Ignore.HighlightSpawns
+local BuyZones = game:GetService('Workspace').Ignore.Zones
 local SkyIsland = game:GetService('Workspace').Ignore.BoostedShotArea.SkyIsland
 local chests = game:getService('Workspace').ChestStands
+
 Core.ScreenGui.Name = 'MAINUI'
-local Character = Player.Character
-local HumanoidRootPart = Character.HumanoidRootPart
 
 Player.CharacterAdded:Connect(function(NewCharacter)
     Character = NewCharacter
@@ -32,33 +34,50 @@ win1:Toggle('Kick Ball', {flag = 'AutoKick'})
 
 task.spawn(function()
     while task.wait() do
-        if win1.flags.Upgrade1 then
+        if win3.flags.Upgrade1 then
             remote:InvokeServer('UpgradeStats', 'Speed', 'inf')
         end
     end
 end)
-win1:Toggle('Upgrade Speed', {flag = 'Upgrade1'})
+win3:Toggle('Upgrade Speed', {flag = 'Upgrade1'})
 
 task.spawn(function()
     while task.wait() do
-        if win1.flags.Upgrade2 then
+        if win3.flags.Upgrade2 then
             remote:InvokeServer('UpgradeStats', 'KickPower', 'inf')
         end
     end
 end)
-win1:Toggle('Upgrade Strength', {flag = 'Upgrade2'})
+win3:Toggle('Upgrade Strength', {flag = 'Upgrade2'})
 
 
 task.spawn(function()
     while task.wait() do
-        if win1.flags.Upgrade3 then
+        if win3.flags.Upgrade3 then
             remote:InvokeServer('UpgradeStats', 'KickAccuracy', 'inf')
         end
     end
 end)
-win1:Toggle('Upgrade Accuracy', {flag = 'Upgrade3'})
+win3:Toggle('Upgrade Accuracy', {flag = 'Upgrade3'})
 
-win1:Button('Rebirth', function()
+
+win3:Button('Buy Available Zones', function()
+ remote:InvokeServer('UnlockArea', BuyZones['Park'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Park Tree'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Desert'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Grand Pyramid'])   
+ remote:InvokeServer('UnlockArea', BuyZones['City'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Distorted Skyscraper'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Beach'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Rocket Ship'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Moon'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Moon Base'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Moon Extractor'])   
+ remote:InvokeServer('UnlockArea', BuyZones['World 2 Portal'])   
+ remote:InvokeServer('UnlockArea', BuyZones['Mars Rocket Ship'])   
+end)
+
+win3:Button('Rebirth', function()
    remote:InvokeServer('Rebirth') 
 end)
 
@@ -108,50 +127,8 @@ win2:Dropdown('Teleports', {
     end
 end)
 
-win3:Dropdown('Chests', {
-    Unbox = _G;
-    flag = 'Unbox';
-    list = {
-    'Sports Chest';
-    'Park Chest';
-    'Desert Chest';
-    'City Chest';
-    'Beach Chest';
-    'Space Chest';
-    'Moon Chest';
-    'Moon Base Chest';
-    'World 2 Portal Chest';
-    'Floppa Chest';
-    }
-}, function(Open)
-    if Open == 'Sports Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Sports Chest'])
-    elseif Open == 'Park Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Park Chest'])
-    elseif Open == 'Desert Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Desert Chest'])
-    elseif Open == 'City Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['City Chest'])
-    elseif Open == 'Beach Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Beach Chest'])
-    elseif Open == 'Space Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Space Chest'])
-    elseif Open == 'Moon Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Moon Chest'])
-    elseif Open == 'Moon Base Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Moon Base Chest'])
-    elseif Open == 'World 2 Portal Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['World 2 Portal Chest'])
-    elseif Open == 'Floppa Chest' then
-        remote:InvokeServer('PromptPurchaseChest', chests['Floppa Chest'])
-    end
-end)
-
 win4:Button('Destroy', function()
    game:GetService('CoreGui').MAINUI:Destroy() 
     
 end)
 
-win4:Button('Beast Mode', function()
-Player:Kick('Nigger')
-end)
