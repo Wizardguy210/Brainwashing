@@ -12,7 +12,9 @@ end
 
 Window1:Button('Gamepasses', function()
  for i, v in next, GPF do
+     if v:IsA'BoolValue' then
     v.Value = true
+        end
     end 
 end)
 
