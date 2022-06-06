@@ -1,5 +1,4 @@
 --[[
-Ill add back more later
 Features
 Steal Tools
 Semi effective Anti Kill 
@@ -55,7 +54,7 @@ end)
 Window1:Toggle('Anti Kill', {flag = 'AntiKill'})
 
 Window1:Button('Drop All Tools', function()
-    for i, v in next, LocalPlayer.Backpack:GetChildren() do
+    for i, v in next, Player.Backpack:GetChildren() do
         v.Parent = Character
         wait()
         v.Parent = game:GetService('Workspace')
