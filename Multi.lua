@@ -42,7 +42,7 @@ end)
 Window1:Toggle('Steal Tools', {flag = 'StealTools'})
 
 task.spawn(function()
-    while task.wait() do
+    while task.wait(.3) do
         if Window1.flags.AbusePosition then
             for MiltonMall, Vengeance in next, game:GetService('Workspace'):GetDescendants() do
                 if Vengeance:IsA'Sound' then
