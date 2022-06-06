@@ -1,7 +1,7 @@
 --[[
+Ill add back more later
 Features
 Steal Tools
-Abuse Time Position 
 Semi effective Anti Kill 
 Drop all tools
 --]]
@@ -29,7 +29,7 @@ task.spawn(function()
                             firetouchinterest(HumanoidRootPart, Tool.Parent, 0)
                         for Random, Name in next, Character:GetChildren() do
                             if Name:IsA'Tool' then
-                                Name.Parent = LocalPlayer.Backpack
+                                Name.Parent = Player.Backpack
                                 end
                             end
                         end
@@ -40,24 +40,6 @@ task.spawn(function()
     end
 end)
 Window1:Toggle('Steal Tools', {flag = 'StealTools'})
-
-task.spawn(function()
-    while task.wait(.3) do
-        if Window1.flags.AbusePosition then
-            for MiltonMall, Vengeance in next, game:GetService('Workspace'):GetDescendants() do
-                if Vengeance:IsA'Sound' then
-                    Vengeance.TimePosition = math.random(1,100)
-                        end
-            for Pedophile, Falco in next, game:GetService('Players'):GetDescendants() do
-                if Falco:IsA'Sound' then
-                    Falco.TimePosition = math.random(1,100)
-                        end
-                end
-            end
-        end
-    end
-end)
-Window1:Toggle('Abuse TimePosition', {flag = 'AbusePosition'})
 
 task.spawn(function()
     while task.wait() do
