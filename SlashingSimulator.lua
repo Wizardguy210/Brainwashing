@@ -1,8 +1,6 @@
-local GPF = game:GetService('ReplicatedStorage').GameEvents:GetChildren()
 local Remote = game:GetService('Players').LocalPlayer.PlayerScripts.EssentialForGameplay.SliceEvent
 local UILib            = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
 local Window1 = UILib:CreateWindow('Main Area')
-local OpenEgg = game:GetService('ReplicatedStorage').Remotes.Pets.Eggs.HatchEgg
 local RebirthRemote = game:GetService('ReplicatedStorage').Remotes.Other.Rebirth
 for i, v in next, game:GetService('CoreGui'):GetChildren() do
     if v.Name == 'ScreenGui' then
