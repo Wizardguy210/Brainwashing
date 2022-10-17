@@ -10,14 +10,6 @@ for i, v in next, game:GetService('CoreGui'):GetChildren() do
         end
 end
 
-Window1:Button('Gamepasses', function()
- for i, v in next, GPF do
-     if v:IsA'BoolValue' then
-    v.Value = true
-        end
-    end 
-end)
-
 task.spawn(function()
     while task.wait() do
         if Window1.flags.AutoSwing then
@@ -26,15 +18,6 @@ task.spawn(function()
     end
 end)
 Window1:Toggle('Auto Swing', {flag = 'AutoSwing'})
-
-task.spawn(function()
-    while task.wait() do
-        if Window1.flags.AutoOpen then
-            OpenEgg:FireServer('TitanEgg', 'Diamonds')
-        end
-    end
-end)
-Window1:Toggle('Auto Open', {flag = 'AutoOpen'})
 
 task.spawn(function()
     while task.wait(5) do
