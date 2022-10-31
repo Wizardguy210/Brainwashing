@@ -201,7 +201,7 @@ Upgrades:Button('Destroy', function()
 end)
 
 while task.wait() do
-    for _, v in next, game:GetSErvice('Workspace')['Effects']:GetChildren() do
+    for _, v in next, game:GetService('Workspace')['Effects']:GetChildren() do
             v:Destroy()
     end
 end
