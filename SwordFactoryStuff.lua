@@ -9,6 +9,10 @@ Released
     Auto Rebirths
     Auto Upgrades
     Auto Upgrade Ascenders
+
+    TODO:
+    Auto Farm Souls
+
 --]]
 
 
@@ -96,24 +100,6 @@ task.spawn(function()
     end
 end)
 Upgrades:Toggle('Auto Upgrade Ascenders', {flag = 'Ascender1'})
-
-
-task.spawn(function()
-    while task.wait() do
-        if Upgrades.flags.Levels then
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['MolderLuck']})
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['PolisherLuck']})
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['ClassifierLuck']})
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['UpgraderLuck']})
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['Enchanter2Luck']})
-             RemoteFunction:InvokeServer(0, 'ButtonServer', 'Activate', {[1] = Appraiser['AppraiserLuck']})
-
-
-        end
-    end
-end)
-Upgrades:Toggle('Auto Level Luck', {flag = 'Levels'})
-
 
 task.spawn(function()
     while task.wait() do
