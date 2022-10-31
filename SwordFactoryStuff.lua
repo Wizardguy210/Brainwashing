@@ -9,10 +9,6 @@ Released
     Auto Rebirths
     Auto Upgrades
     Auto Upgrade Ascenders
-
-    TODO:
-    Auto Farm Souls
-
 --]]
 
 
@@ -24,7 +20,7 @@ local ReplicatedStorage = game:GetService('ReplicatedStorage')
 local stats = ReplicatedStorage['Data'][tostring(Player)]['Stats']
 local RemoteFunction = ReplicatedStorage['Framework']['RemoteFunction']
 local TeleportRemote = ReplicatedStorage['Events']['ToMap']
-
+local RemoteEvent = ReplicatedStorage['Framework']['RemoteEvent']
 local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Karshtakavaar/Folder/main/WallysUI', true))()
 local CoreGui = game:GetService('CoreGui')
 
@@ -39,24 +35,17 @@ local GetBase = function()
 end
 local Base = GetBase()
 local Ascenders = Base['Ascender']
-local Appraiser = Base['ItemMachine']['Appraiser']
-
-
-
 
 -- // UI \\ --
 
 local Upgrades = library:CreateWindow('Main Features')
-local Boosts = library:CreateWindow('Boosts')
-local Teleports = library:CreateWindow('Teleports')
-local Misc = library:CreateWindow('Misc')
 CoreGui['ScreenGui']['Name'] = '1Z2Y3X'
-
-
 
 -- // MAIN SHIT \\ --
 
 -- MAIN FEATURES --
+
+Upgrades:Section('Upgrades')
 
 task.spawn(function()
     while task.wait() do
@@ -87,7 +76,6 @@ task.spawn(function()
 end)
 Upgrades:Toggle('Auto Rebirth', {flag = 'Rebirth'})
 
-
 task.spawn(function()
     while task.wait() do
         if Upgrades.flags.Ascender1 then
@@ -101,20 +89,11 @@ task.spawn(function()
 end)
 Upgrades:Toggle('Auto Upgrade Ascenders', {flag = 'Ascender1'})
 
-task.spawn(function()
-    while task.wait() do
-        if Upgrades.flags.Souls then
-            RemoteFunction:InvokeServer(0, 'SoulTankService', 'AddSouls', {})
-        end
-    end
-end)
-Upgrades:Toggle('Auto Souls', {flag = 'Souls'})
-
 -- BOOSTS -- 
-
+Upgrades:Section('Boosts')
 task.spawn(function()
     while task.wait() do
-        if Boosts.flags.Boost1 then
+        if Upgrades.flags.Boost1 then
             RemoteFunction:InvokeServer(0, 'BoostService', 'BuyWithGems', {[1] = 'Dungeon',   [2] = '30Min'})
             RemoteFunction:InvokeServer(0, 'BoostService', 'BuyWithGems', {[1] = 'Cash',      [2] = '30Min'})
             RemoteFunction:InvokeServer(0, 'BoostService', 'BuyWithGems', {[1] = 'Artifact',  [2] = '30Min'})
@@ -125,11 +104,11 @@ task.spawn(function()
         end
     end
 end)
-Boosts:Toggle('Autobuy ALL Boosts', {flag = 'Boost1'})
+Upgrades:Toggle('Autobuy ALL Boosts', {flag = 'Boost1'})
 
 task.spawn(function()
     while task.wait() do
-        if Boosts.flags.Boost2 then
+        if Upgrades.flags.Boost2 then
             RemoteFunction:InvokeServer(0, 'BoostService', 'Use', {[1] = 'Dungeon',   [2] = '30Min'})
             RemoteFunction:InvokeServer(0, 'BoostService', 'Use', {[1] = 'Cash',      [2] = '30Min'})
             RemoteFunction:InvokeServer(0, 'BoostService', 'Use', {[1] = 'Artifact',  [2] = '30Min'})
@@ -140,51 +119,80 @@ task.spawn(function()
         end
     end
 end)
-Boosts:Toggle('Autouse ALL Boosts', {flag = 'Boost2'})
+Upgrades:Toggle('Autouse ALL Boosts', {flag = 'Boost2'})
 
+Upgrades:Section('Other Features')
+
+task.spawn(function()
+    while task.wait() do
+        if Upgrades.flags.Souls then
+            RemoteFunction:InvokeServer(0, 'SoulTankService', 'AddSouls', {})
+        end
+    end
+end)
+Upgrades:Toggle('Auto Souls', {flag = 'Souls'})
+
+
+
+Upgrades:Button('50 Locks', function()
+    for i = 1,50 do task.wait()
+        RemoteFunction:InvokeServer(0, 'EnchanterServer', 'BuyLock', {})
+
+    end 
+end)
 
 
 -- TELEPORTS --
+Upgrades:Section('Teleports')
 
-Teleports:Button('Noob Island', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Noob Island')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Noob Island')
+Upgrades:Dropdown('Teleports', {
+TempTeleport = _G;
+flag = 'TP';
+list = {
+    'Home',
+    'Noob Island',
+    'Sand Canyons',
+    'Icy Planes',
+    'Magma Hills',
+    'Poisoned Cove',
+    'Plasma Ruins',
+    'Graveyard'
+    }
+}, function(loc)
+    if loc == 'Home' then 
+        RemoteEvent:FireServer(0, 'UIServer', 'Teleport', {})
+        RemoteEvent:FireServer(0, 'UIServer', 'Teleport', {})
+    elseif loc == 'Noob Island' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Noob Island')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Noob Island')
+    elseif loc == 'Sand Canyons' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Sand Canyons')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Sand Canyons')
+    elseif loc == 'Icy Planes' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Icy Planes')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Icy Planes')
+    elseif loc == 'Magma Hills' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Magma Hills')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Magma Hills')
+    elseif loc == 'Poisoned Cove' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Poisoned Cove')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Poisoned Cove')
+    elseif loc == 'Plasma Ruins' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Plasma Ruins')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Plasma Ruins')
+    elseif loc == 'Graveyard' then
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Graveyard')
+        TeleportRemote:FireServer(stats, Base, tostring(Player), 'Graveyard')
+    end
 end)
-
-Teleports:Button('Sand Canyons', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Sand Canyons')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Sand Canyons')
-end)
-
-Teleports:Button('Icy Planes', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Icy Planes')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Icy Planes')
-end)
-
-Teleports:Button('Magma Hills', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Magma Hills')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Magma Hills')
-end)
-
-Teleports:Button('Poisoned Cove', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Poisoned Cove')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Poisoned Cove')
-end)
-
-Teleports:Button('Plasma Ruins', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Plasma Ruins')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Plasma Ruins')
-end)
-
-Teleports:Button('Graveyard', function()
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Graveyard')
-    TeleportRemote:FireServer(stats, Base, tostring(Player), 'Graveyard')
-end)
-
-
-
 
 -- MISC STUFF --
-Misc:Button('Destroy', function()
+Upgrades:Section('Misc')
+
+Upgrades:Button('Rejoin PUBLIC SERVER', function()
+    game:GetService'TeleportService':TeleportToPlaceInstance(game.PlaceId, game.JobId)
+end)
+
+Upgrades:Button('Destroy', function()
    CoreGui['1Z2Y3X']:Destroy() 
 end)
