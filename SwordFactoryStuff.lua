@@ -9,6 +9,9 @@ Released
     Auto Rebirths
     Auto Upgrades
     Auto Upgrade Ascenders
+    Added Auto buy Lock
+    Added Rejoin
+    Condensed Everything
 --]]
 
 
@@ -89,6 +92,17 @@ task.spawn(function()
 end)
 Upgrades:Toggle('Auto Upgrade Ascenders', {flag = 'Ascender1'})
 
+task.spawn(function()
+    while task.wait() do
+        if Upgrades.flags.Souls then
+            RemoteFunction:InvokeServer(0, 'SoulTankService', 'AddSouls', {})
+        end
+    end
+end)
+Upgrades:Toggle('Auto Souls', {flag = 'Souls'})
+
+
+
 -- BOOSTS -- 
 Upgrades:Section('Boosts')
 task.spawn(function()
@@ -121,16 +135,10 @@ task.spawn(function()
 end)
 Upgrades:Toggle('Autouse ALL Boosts', {flag = 'Boost2'})
 
-Upgrades:Section('Other Features')
 
-task.spawn(function()
-    while task.wait() do
-        if Upgrades.flags.Souls then
-            RemoteFunction:InvokeServer(0, 'SoulTankService', 'AddSouls', {})
-        end
-    end
-end)
-Upgrades:Toggle('Auto Souls', {flag = 'Souls'})
+
+-- ENCHANTS -- 
+Upgrades:Section('Enchants')
 
 
 
