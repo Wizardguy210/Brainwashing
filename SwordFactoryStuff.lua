@@ -12,6 +12,7 @@ Released
     Added Auto buy Lock
     Added Rejoin
     Condensed Everything
+    Added lag fix for souls/gems
 --]]
 
 
@@ -45,8 +46,6 @@ local Upgrades = library:CreateWindow('Main Features')
 CoreGui['ScreenGui']['Name'] = '1Z2Y3X'
 
 -- // MAIN SHIT \\ --
-
--- MAIN FEATURES --
 
 Upgrades:Section('Upgrades')
 
@@ -103,7 +102,6 @@ Upgrades:Toggle('Auto Souls', {flag = 'Souls'})
 
 
 
--- BOOSTS -- 
 Upgrades:Section('Boosts')
 task.spawn(function()
     while task.wait() do
@@ -137,7 +135,6 @@ Upgrades:Toggle('Autouse ALL Boosts', {flag = 'Boost2'})
 
 
 
--- ENCHANTS -- 
 Upgrades:Section('Enchants')
 
 
@@ -150,7 +147,6 @@ Upgrades:Button('50 Locks', function()
 end)
 
 
--- TELEPORTS --
 Upgrades:Section('Teleports')
 
 Upgrades:Dropdown('Teleports', {
@@ -194,7 +190,6 @@ list = {
     end
 end)
 
--- MISC STUFF --
 Upgrades:Section('Misc')
 
 Upgrades:Button('Rejoin PUBLIC SERVER', function()
@@ -204,3 +199,10 @@ end)
 Upgrades:Button('Destroy', function()
    CoreGui['1Z2Y3X']:Destroy() 
 end)
+
+while task.wait() do
+    for _, v in next, game:GetSErvice('Workspace')['Effects']:GetChildren() do
+            v:Destroy()
+    end
+end
+
