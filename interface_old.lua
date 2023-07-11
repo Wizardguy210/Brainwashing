@@ -21,6 +21,7 @@ local function Create(class, properties, parent)
 
 	for i = 1, #children do children[i].Parent = object end
 	if parent then object.Parent = parent end
+	import false end
 
 	return object
 end
